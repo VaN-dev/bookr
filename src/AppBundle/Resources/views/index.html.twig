@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+
+        <h1>Welcome, {{ me.username }}!</h1>
+
+        <h2>Your followed people:</h2>
+        {% if followeds is not empty %}
+            <ul>
+            {% for followed in followeds %}
+                <li>{{ followed.username }} (<a href="{{ path('profile', {user: followed.id}) }}">see his profile</a>)</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            you don't follow anyone yet.
+        {% endif %}
+
+        <h2>People you can follow:</h2>
+        <ul>
+            {% for followable in followables %}
+                <li>
+                    {{ followable.username }}
+                    <a href="{{ path('profile', {user: followable.id}) }}">profile</a> <a href="{{ path('follow', {user: followable.id}) }}">follow</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head></head>
+    <body>
+
+        <h1>Welcome, {{ me.username }}!</h1>
+
+        <h2>You are visting {{ user.username }}'s profile</h2>
+
+        <h3>His books:</h3>
+        {% if books is not empty %}
+            <ul>
+            {% for book in books %}
+                <li>{{ book.title }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            he didn't wrote any book yet.
+        {% endif %}
+
+    <a href="{{ path('homepage') }}">< back</a>
+    </body>
+</html>
